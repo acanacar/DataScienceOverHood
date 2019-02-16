@@ -12,6 +12,10 @@ y = house_data.SalePrice
 # X
 features = ['LotArea', 'YearBuilt', '1stFlrSF', '2ndFlrSF', 'FullBath', 'BedroomAbvGr', 'TotRmsAbvGrd']
 X = house_data[features]
+
+# Check nan
+print(len([col for col in features if X[col].isnull().any()]))
+# 0
 # Split
 train_X, val_X, train_y, val_y = train_test_split(X, y, random_state=1)
 
