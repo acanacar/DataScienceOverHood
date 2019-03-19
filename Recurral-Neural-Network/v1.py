@@ -87,7 +87,7 @@ predicted_stock_price = regressor.predict(X_test)
 predicted_stock_price = sc.inverse_transform(predicted_stock_price)
 
 # Visualising the results
-plt.plot(real_stock_price, color = 'red', label = 'Real BankA Stock Price')
+plt.plot(real_stock_price, color = 'black', label = 'Real BankA Stock Price')
 plt.plot(predicted_stock_price, color = 'blue', label = 'Predicted BankA Stock Price')
 plt.title('BankA Price Prediction')
 plt.xlabel('Time')
