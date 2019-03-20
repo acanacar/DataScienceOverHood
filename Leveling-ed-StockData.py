@@ -79,3 +79,9 @@ def ols(data):
     return m, b
 
 
+# add a time step
+steps = np.asarray(range(1, len(data)+1))
+print('steps')
+print(steps)
+steps.reshape(1, -1)
+data['step'] = steps
