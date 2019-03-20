@@ -42,3 +42,40 @@ def plot_dataframe(d, t):
 data = pd.read_csv('../data/StockDataWithVolume.csv', index_col='Date', parse_dates=True)
 features = ['DJIA', 'S&P', 'NASDAQ', 'Russell', 'BTC']
 
+# fill in a couple NaN
+# data.dropna()
+data = data.fillna(method='ffill')
+
+
+#########################################################################################
+# level the series out, time series calculations all assume signal is stationary in time
+########################################################################################
+
+# pandas removed ols package !#&^*@$
+# need y intercept, b
+# and slope, m
+# y = mx + b
+# using simplest case possible
+#
+# how to get x, y just in case you want to put this into an ordinary least squares package
+# for better slope/intercept numbers
+# This is close enough for proof of concept
+#
+# x = list(range(1, len(data)))
+# y = data
+
+
+# son terim - ilk terim bolu kolon uzunlugu egim ve ilk terimi de constant b olarak belirledik.
+# not really ols, but close enough
+def ols(data):
+    m = (data[-1] - data[0]) / len(data)
+    b = data[0]
+
+    print(data[-1], data[0], (data[-1] - data[0]))
+    print(m, b)
+
+    print('-----------------------')
+
+    return m, b
+
+
