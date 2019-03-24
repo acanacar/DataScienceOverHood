@@ -39,7 +39,7 @@ def plot_dataframe(d, t):
 # data
 ########################################################################
 # read in datafile created in LoadAndMatchDates.py
-data = pd.read_csv('../data/StockDataWithVolume.csv', index_col='Date', parse_dates=True)
+data = pd.read_csv('./StockDataWithVolume.csv', index_col='Date', parse_dates=True)
 features = ['DJIA', 'S&P', 'NASDAQ', 'Russell', 'BTC']
 
 # fill in a couple NaN
