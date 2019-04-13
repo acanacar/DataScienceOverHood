@@ -75,6 +75,7 @@ window2.mainloop()
 # ScrolledText widget - textarea
 
 from tkinter import scrolledtext
+from tkinter import messagebox
 
 window2 = Tk()
 window2.title("Welcome to the acanacar app")
@@ -87,9 +88,11 @@ txt.grid(column=0, row=0)
 
 def clicked2():
     txt.insert(INSERT, 'You text goes here')
+    messagebox.showinfo('Message title','Message content')
 
 
 btn = Button(window2, text="Click mee", command=clicked2)
 btn.grid(column=1, row=0)
 
 window2.mainloop()
+
