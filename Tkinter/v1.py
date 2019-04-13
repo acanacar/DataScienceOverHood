@@ -88,11 +88,18 @@ txt.grid(column=0, row=0)
 
 def clicked2():
     txt.insert(INSERT, 'You text goes here')
-    messagebox.showinfo('Message title','Message content')
+    messagebox.showinfo('Message title', 'Message content')
+    messagebox.showerror('Message title', 'Message content')
 
 
 btn = Button(window2, text="Click mee", command=clicked2)
 btn.grid(column=1, row=0)
 
-window2.mainloop()
+# spin = Spinbox(window2, from_=0, to=100, width=5)
 
+var = IntVar()
+var.set(3)
+spin = Spinbox(window2, values=(3, 5, 8), width=5)
+spin.grid(column=0, row=0)
+
+window2.mainloop()
