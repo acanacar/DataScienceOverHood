@@ -1,6 +1,8 @@
+from os import path
 from tkinter import *
-from tkinter import scrolledtext, messagebox
+from tkinter import scrolledtext, messagebox, filedialog, Menu
 from tkinter.ttk import *
+from tkinter import ttk
 
 window = Tk()
 window.title("Welcome to the acanacar app")
@@ -108,8 +110,6 @@ window3 = Tk()
 window3.title('Window 3 title acanacar app')
 window3.geometry('500x250')
 
-from tkinter import ttk
-
 style = ttk.Style()
 style.theme_use('default')
 style.configure('black.Horizontal.TProgressbar', background='black')
@@ -117,15 +117,46 @@ bar = Progressbar(window3, length=100, style='black.Horizontal.TProgressbar')
 
 bar['value'] = 40
 bar.grid(column=0, row=0)
-window3.mainloop()
-
-from tkinter import filedialog
+# window3.mainloop()
 
 file = filedialog.askopenfilename()
-files = filedialog.askopenfilenames() #multiple
-file = filedialog.askopenfilename(filetypes=(('Text files', "*.txt"), ("all files", "*.*"))) #filter
-
+files = filedialog.askopenfilenames()  # multiple
+file = filedialog.askopenfilename(filetypes=(('Text files', "*.txt"), ("all files", "*.*")))  # filter
 dir = filedialog.askdirectory()
-from os import path
-
 file = filedialog.askopenfilename(initialdir=path.dirname(__file__))
+
+
+def hello():
+    print('hello')
+
+
+menu = Menu(window3)
+
+new_item = Menu(menu)
+new_item.add_command(label='New')
+
+menu.add_cascade(label='File', menu=new_item)
+menu.add_command(label='Quit!', command=window3.quit)
+menu.add_command(label='Hi!', command=hello)
+window3.config(menu=menu)
+
+window3.mainloop()
+
+window4 = Tk()
+
+window4.title('Notebook acanacar')
+
+tab_control = ttk.Notebook(window4)
+tab1 = ttk.Frame(tab_control)
+tab2 = ttk.Frame(tab_control)
+
+tab_control.add(tab1, text='First')
+tab_control.add(tab2, text='Second')
+lbl1 = Label(tab1, text='Label1', padx=5, pady=5)
+lbl1.grid(columns=1, row=1)
+lbl2 = Label(tab2, text='Label2', padx=5, pady=5)
+lbl2.grid(columns=2, row=0)
+
+tab_control.pack(expand=1, fill='both')
+
+window4.mainloop()
