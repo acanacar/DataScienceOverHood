@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import scrolledtext, messagebox
+from tkinter.ttk import *
 
 window = Tk()
 window.title("Welcome to the acanacar app")
@@ -27,7 +29,6 @@ btn = Button(window, text='Click Me', command=clicked)
 btn.grid(column=2, row=0)
 
 # combobox widget
-from tkinter.ttk import *
 
 combo = Combobox(window)
 combo['values'] = (1, 2, 3, 4, 5, 'Text')
@@ -74,8 +75,6 @@ window2.mainloop()
 
 # ScrolledText widget - textarea
 
-from tkinter import scrolledtext
-from tkinter import messagebox
 
 window2 = Tk()
 window2.title("Welcome to the acanacar app")
@@ -99,7 +98,34 @@ btn.grid(column=1, row=0)
 
 var = IntVar()
 var.set(3)
-spin = Spinbox(window2, values=(3, 5, 8), width=5)
+spin = Spinbox(window2, values=(3, 5, 8), width=5, textvariable=var)
 spin.grid(column=0, row=0)
 
 window2.mainloop()
+
+window3 = Tk()
+
+window3.title('Window 3 title acanacar app')
+window3.geometry('500x250')
+
+from tkinter import ttk
+
+style = ttk.Style()
+style.theme_use('default')
+style.configure('black.Horizontal.TProgressbar', background='black')
+bar = Progressbar(window3, length=100, style='black.Horizontal.TProgressbar')
+
+bar['value'] = 40
+bar.grid(column=0, row=0)
+window3.mainloop()
+
+from tkinter import filedialog
+
+file = filedialog.askopenfilename()
+files = filedialog.askopenfilenames() #multiple
+file = filedialog.askopenfilename(filetypes=(('Text files', "*.txt"), ("all files", "*.*"))) #filter
+
+dir = filedialog.askdirectory()
+from os import path
+
+file = filedialog.askopenfilename(initialdir=path.dirname(__file__))
